@@ -1,62 +1,96 @@
-
+var today = moment().format('dddd, MMMM Do, YYYY');
+console.log(today);
+$("#currentDay").text(today);
 
 $(document).ready(function () {
 
-    var today = moment().format('dddd, MMMM Do, YYYY');
-    console.log(today);
-    $("#currentDay").text(today);
-
-    $(".saveBtn").on("click", function () {
-        var time = $(this).parent().attr("id");
-        var description = $(this).siblings(".description").val();
-        console.log(description, time)
-
-        localStorage.setItem(time, description);
-        
+    colorChange();
    
-    })
 
-        var currentHour = moment().hour();
-        console.log(currentHour);
-        
-        $(".time-block").each(function () {     
-       
-        var blockHour = parseInt($(this).siblings().attr("id").split("hour")[1]);
-       
-       
-        console.log(blockHour, currentHour);
-
-
-        if (blockHour < currentHour){
-            $(this).addClass("past");
-            
-        }
-
-        if (blockHour === currentHour){
-            $(this).addClass("present");
-        }
-
-        else {
-            $(this).addClass("future");
-        }
-    
-       })
-  
-    
 });
 
 
+function colorChange() {
+    var currentHour = moment().hour();
+    console.log(currentHour);
+
+    $(".time-block").each(function () {
+
+        var blockHour = $(this).attr("id").split("hour-")[1];
+        console.log(blockHour);
+
+        if (currentHour > blockHour) {
+
+            $(this).addClass("past");
+
+        }
+
+        else if (currentHour < blockHour) {
+
+            $(this).addClass("future");
+
+        }
+
+        else {
+
+            $(this).addClass("present");
+
+        }
+
+    })
+}
+
+
+
+$(".saveBtn").on("click", function () {
+    event.preventDefault();
+    var time = $(this).parent().attr("id");
+    var description = $(this).siblings(".description").val();
+   
+
+    localStorage.setItem(time, description);
+    console.log(description, time);
+
+ 
+    
+    colorChange();
+    
+
+})
+
+$("#hour-9").children(".description").val(localStorage.getItem("hour-9"));
+$("#hour-10").children(".description").val(localStorage.getItem("hour-10"));
+$("#hour-11").children(".description").val(localStorage.getItem("hour-11"));
+$("#hour-12").children(".description").val(localStorage.getItem("hour-12"));    
+$("#hour-13").children(".description").val(localStorage.getItem("hour-13"));
+$("#hour-14").children(".description").val(localStorage.getItem("hour-14"));    
+$("#hour-15").children(".description").val(localStorage.getItem("hour-15"));
+$("#hour-16").children(".description").val(localStorage.getItem("hour-16"));    
+$("#hour-17").children(".description").val(localStorage.getItem("hour-17"));      
+
+
+    
+    //$(".time-block").each(function () {
+    //var inputText = $(this).children(".description").val();
+    //JSON.parse(localStorage.getItem(inputText));
+    //console.log(inputText);
+    
+    
+    //$(".description").val("");
+    //$(".description").val(inputText);
+        
+    //}
+
+//)//};
+
+//My random notes
+
+//To clear ?????
+//if (currentTime >=0 && currentTime < 9){
+    //localStorage.clear();
+  //}
+
 //  CHANGE INPUT BOX COLOR BASED ON TIME OF DAY
-
-
-
-
-
-
-
-
-
-
 
 //var currentTime = moment();
 //console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
