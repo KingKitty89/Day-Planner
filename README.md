@@ -32,3 +32,11 @@ This website provides a user with a work day scheduler so that they can manage t
 * #### **Name:** Jessica Helft (@KingKitty89)
 * #### **Email:** [jessicahelft@gmail.com](jessicahelft@gmail.com)
 * #### **LinkedIn:** https://www.linkedin.com/in/jessicahelft
+
+## **Screenshots**
+![Demo](./assets/schedule1.png)
+![Demo](./assets/schedule2.png)
+
+## **Tests**
+
+![Demo](./assets/dayplanner.gif)
